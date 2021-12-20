@@ -10,7 +10,7 @@ export const App = () => {
         <Router>            
             <List/> 
             <Routes>
-               {/*  <Route path='/' element={<city.All/>}/>
+                <Route path='/' element={<city.All/>}/>
                 <Route path='/gomel' element={<city.Gomel/>}></Route>
                 <Route path='/vetka' element={<city.Vetka/>}></Route>
                 <Route path='/chechersk' element={<city.Chechersk/>}></Route>
@@ -27,13 +27,13 @@ export const App = () => {
                 <Route path='/loev' element={<city.Loev/>}></Route>
                 <Route path='/petrikov' element={<city.Petrikov/>}></Route>
                 <Route path='/mozir' element={<city.Mozir/>}></Route>
-                <Route path='/jitkovichi' element={<city.Jitkovochi/>}></Route>
+                <Route path='/jitkovichi' element={<city.Jitkovichi/>}></Route>
                 <Route path='/elsk' element={<city.Elsk/>}></Route>
                 <Route path='/narovlya' element={<city.Narovlya/>}></Route>
                 <Route path='/lelchici' element={<city.Lelchici/>}></Route>
                 <Route path='/october' element={<city.October/>}></Route>
-                <Route path='/gomelzues' element={<city.GomelZues/>}></Route>  */}
-                <Route path='/test' element={<city.Test/>}></Route> 
+                <Route path='/gomelzues' element={<city.GomelZues/>}></Route> 
+                {/* <Route path='/test' element={<city.Test/>}></Route>  */}
             </Routes>            
         </Router>
     )

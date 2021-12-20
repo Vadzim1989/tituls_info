@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
-import { delay } from '../utils/delay';
-import preloaderSrc from '../img/preloader.gif';
+import React from 'react';
 import { TableCreater, TableHeader } from '../components/index';
+import FindContext from '../context';
 
 
 const titulData = [
@@ -9,7 +8,7 @@ const titulData = [
         id_adr: 10,
         god_vvod: 2020,
         zues: "Gomel",
-        name: 'titul1',
+        name_titul: 'titul1',
         all_socket: 50,
         check_socket: 50,
         byfly_pon: 10,
@@ -23,7 +22,7 @@ const titulData = [
         id_adr: 14,
         god_vvod: 2018,
         zues: "Vetka",
-        name: 'titul2',
+        name_titul: 'titul2',
         all_socket: 50,
         check_socket: 50,
         byfly_pon: 10,
@@ -33,17 +32,19 @@ const titulData = [
         phone_null_pon: 0,
         vpn: 0
     }
-]
+];
 
 
 export const Test = () => {
+    const {isFind} = React.useContext(FindContext);
+    const filteredTitul = titulData.filter(({god_vvod}) => god_vvod === +isFind)
+
     return (
       <table className='table table-striped'>
         <TableHeader/>
         <tbody>
-          {titulData.map(({...titulInfo}) => (
-                          <TableCreater {...titulInfo}/>
-          ))}    
+          { !isFind ? titulData.map(({...titulInfo}) => (<TableCreater {...titulInfo}/>))
+          : filteredTitul.map(({...titulInfo}) => (<TableCreater {...titulInfo}/>))}    
         </tbody>
       </table>
     );

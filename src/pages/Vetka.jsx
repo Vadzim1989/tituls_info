@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { delay } from '../utils/delay';
 import preloaderSrc from '../img/preloader.gif';
 import { TableCreater, TableHeader } from '../components/index';
+import FindContext from '../context';
 
 
 export const Vetka = () => {
   let [titulData, setTitulData] = useState([]);
   let [isLoading, setIsLoading] = useState(false);
+  
+  const {isFind} = React.useContext(FindContext);
+  const filteredTitul = titulData.filter(({god_vvod}) => god_vvod === +isFind)
 
     useEffect(() => {
         setIsLoading(true);
@@ -26,9 +30,10 @@ export const Vetka = () => {
       <table className='table table-striped'>
         <TableHeader/>
         <tbody>
-          { !isLoading ?  titulData.map(({...titulInfo}) => (
-                          <TableCreater {...titulInfo}/>
-          )): <img src={preloaderSrc} alt="preloader" style={{position:'relative', top:"50vh", left:"70vh"}}/>}         
+          { !isLoading ?  
+          ( !isFind ? titulData.map(({...titulInfo}) => (<TableCreater {...titulInfo}/>))
+            : filteredTitul.map(({...titulInfo}) => (<TableCreater {...titulInfo}/>)))
+          : <img src={preloaderSrc} alt="preloader" style={{position:'relative', top:"50vh", left:"70vh"}}/>}         
         </tbody>
       </table>
     );

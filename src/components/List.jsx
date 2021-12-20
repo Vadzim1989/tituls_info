@@ -74,9 +74,9 @@ export const List = () => {
         <NavLink to='/gomelzues'>
           <li className="list-group-item">Гомельский ЗУЭС</li>
         </NavLink>
-        <NavLink to='/test'>
+        {/* <NavLink to='/test'>
           <li className="list-group-item">Test</li>
-        </NavLink>
+        </NavLink> */}
       </ul>    
   )
 }
