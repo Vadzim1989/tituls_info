@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+const path = require('path')
 const cors = require('cors');
 
 
@@ -29,6 +30,12 @@ app.use('/api/titulinfo', require('./routers/getRogachevTituls')); // rogachev
 app.use('/api/titulinfo', require('./routers/getSvetlogorskTitul')); // svetlogorsk
 app.use('/api/titulinfo', require('./routers/getVetkaTituls')); // vetka
 
+if(process.env.NODE_ENV === 'production') {
+    app.use('/', express.static(path.join('build')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve('build', 'index.html'));
+    })
+}
 
 app.listen(4000);
 
